@@ -1,6 +1,7 @@
 import { Route, IndexRedirect } from 'react-router'
 import LocalCounter from './containers/LocalCounter'
 import RemoteCounter from './containers/RemoteCounter'
+import SplashPage from './containers/SplashPage'
 import App from './components/App'
 import React from 'react'
 
@@ -9,5 +10,6 @@ export default (
     <IndexRedirect to='/remote-counter' />
     <Route path='local-counter' component={LocalCounter} />
     <Route path='remote-counter' component={RemoteCounter} />
+    <Route path='splash' component={SplashPage} />
   </Route>
 )

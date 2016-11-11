@@ -1,10 +1,12 @@
 import { schema as countSchema, resolvers as countResolvers } from './count'
+import { schema as photoSchema, resolvers as photoResolvers } from './photo'
 import Data from './data'
 import { makeExecutableSchema } from 'graphql-tools'
 
 const rootSchema = `
   type RootQuery {
     count: Count
+    photo: Photo
   }
 
   type RootMutation {
@@ -20,7 +22,8 @@ const rootSchema = `
 
 const rootResolvers = {
   RootQuery: {
-    count: () => Data.count
+    count: () => Data.count,
+    photo: () => Data.photo
   },
   RootMutation: {
     addCount(_, { amount }) {
@@ -35,12 +38,14 @@ const rootResolvers = {
 
 const schema = [
   rootSchema,
-  countSchema
+  countSchema,
+  photoSchema
 ]
 
 const resolvers = {
   ...rootResolvers,
-  ...countResolvers
+  ...countResolvers,
+  ...photoResolvers
 }
 
 const executableSchema = makeExecutableSchema({
